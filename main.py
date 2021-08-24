@@ -11,18 +11,20 @@ class Game:
             return False
         if not x.isalpha():
             return False
+        return True
 
     def inner_game(self):
         while self.score > 0:
-            candidate = input("enter a letter")
-            if validate_single(candidate):
-                if candidate in self.answer:
-                    print("yay")
-                    print(f"your score is {self.score}")
-                else:
-                    print("Nooooo")
-                    self.score -= 1
-                    print(f"your score is {self.score}")
+            candidate = input(f"{self.spaces} letter word")
+            if not self.validate_single(candidate):
+                continue
+            if candidate in self.answer:
+                print("yay")
+                print(f"your score is {self.score}")
+            else:
+                print("Nooooo")
+                self.score -= 1
+                print(f"your score is {self.score}")
 
 
 bigstring = """This is more of a guess the word game the core concepts you have to use while
